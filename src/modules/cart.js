@@ -8,6 +8,7 @@ const cart = () => {
     cartModal.style.display = "flex";
   };
 
+  // Закрытие по нажатию на кнопку и esc
   const closeCart = (e) => {
     e.key === "Escape"
       ? (cartModal.style.display = "")
