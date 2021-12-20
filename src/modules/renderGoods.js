@@ -2,6 +2,9 @@ const renderGoods = (goods) => {
   // console.log(goods);
   const goodsContainer = document.querySelector(".goods");
 
+  // сохраняем в данные в localStorage
+  localStorage.setItem("goods", JSON.stringify(goods));
+
   // поскольку insertAdjacentHTML не перезаписывает верстку, а дополняет её, нужно очистить вёрстку
   goodsContainer.innerHTML = "";
 
@@ -11,10 +14,11 @@ const renderGoods = (goods) => {
 
     // на каждой итерации forEach отрисовуем карточку товара
     // insertAdjacentHTML - размещает верстку внутри контейнера
+    // Добавляем аттрибут (21 строка) data-key="${goodsItem.id}" для того, чтобы знать по какой кнопке карточки кликнули (берём id карточки)
     goodsContainer.insertAdjacentHTML(
       "beforeend",
       `<div class="col-12 col-md-6 col-lg-4 col-xl-3">
-        <div class="card">
+        <div class="card" data-key="${goodsItem.id}"> 
           ${goodsItem.sale ? '<div class="card-sale">🔥Hot Sale🔥</div>' : ""}
           <div class="card-img-wrapper">
             <span
